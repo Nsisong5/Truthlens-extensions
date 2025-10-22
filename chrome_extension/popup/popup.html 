@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruthLens</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 11l3 3L22 4"></path>
+        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+      </svg>
+      <span>TruthLens</span>
+    </div>
+  </div>
+
+  <!-- Login View -->
+  <div id="loginView" class="view" style="display: none;">
+    <div class="welcome">
+      <h2>Welcome to TruthLens</h2>
+      <p>Login to start checking facts</p>
+    </div>
+
+    <form id="loginForm" class="form">
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input 
+          type="text" 
+          id="username" 
+          placeholder="Enter your username"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          placeholder="Enter your password"
+          required
+        >
+      </div>
+
+      <div id="loginError" class="error" style="display: none;"></div>
+
+      <button type="submit" class="btn btn-primary" id="loginBtn">
+        <span class="btn-text">Login</span>
+        <span class="spinner" style="display: none;"></span>
+      </button>
+    </form>
+
+    <div class="footer-link">
+      <span>Don't have an account?</span>
+      <a href="#" id="signupLink">Sign up on web</a>
+    </div>
+  </div>
+
+  <!-- Main View (Logged In) -->
+  <div id="mainView" class="view" style="display: none;">
+    <div class="user-info">
+      <div class="user-avatar"></div>
+      <div class="user-details">
+        <span class="user-name" id="userName">User</span>
+        <button id="logoutBtn" class="btn-text-link">Logout</button>
+      </div>
+    </div>
+
+    <div class="checker-section">
+      <label for="textInput">Check a Claim</label>
+      <textarea 
+        id="textInput" 
+        placeholder="Paste text here to verify..."
+        rows="4"
+      ></textarea>
+      <div class="char-count">
+        <span id="charCount">0</span> characters
+      </div>
+
+      <button id="checkBtn" class="btn btn-primary" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+        </svg>
+        <span class="btn-text">Check Document</span>
+        <span class="spinner" style="display: none;"></span>
+      </button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="resultSection" class="result-section" style="display: none;">
+      <div class="result-score">
+        <div class="score-pill" id="scorePill">
+          <span class="score-label">Truth Score</span>
+          <span class="score-value" id="scoreValue">0/100</span>
+        </div>
+        <div class="verdict" id="verdict"></div>
+      </div>
+
+      <p class="rationale" id="rationale"></p>
+
+      <div class="sources" id="sources"></div>
+
+      <div class="result-actions">
+        <a href="#" id="viewFullReport" class="btn btn-ghost">
+          View Full Report
+        </a>
+        <button id="checkAgainBtn" class="btn btn-ghost">
+          Check Again
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
